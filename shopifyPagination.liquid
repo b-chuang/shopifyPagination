@@ -1,0 +1,19 @@
+{% assign updated_count = paginate.current_offset | plus: paginate.page_size %}
+  <span class="nomobile">Displaying </span>
+  <span>
+      {{ paginate.current_offset | plus: 1 }}
+    {% if paginate.items < paginate.page_size %}
+      - {{ paginate.items }} of {{ paginate.items }}
+    {% else %}
+      - 
+      {% if paginate.items > updated_count %}
+        {{ updated_count }}
+      {% else %}
+        {{ paginate.items }}
+      {% endif %}
+      of {{ paginate.items}}
+    {% endif %}
+    Products 
+    <span class="nomobile">
+      (Page {{ paginate.current_page }} of {{ paginate.pages }})
+    </span> / </span><a href="?view=all">View All</a>
